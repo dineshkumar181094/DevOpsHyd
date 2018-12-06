@@ -1,0 +1,8 @@
+---
+- name: fifth playbook
+  hosts: all
+  
+  tasks: 
+   - name: stating servicee
+     service: name=cron enabled=yes state=started
+  

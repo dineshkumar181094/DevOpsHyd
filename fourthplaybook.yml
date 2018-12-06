@@ -1,0 +1,7 @@
+---
+- name: fourth playbook
+  hosts: all
+  
+  tasks:
+    - name: installing packages
+      apt: name=talk state=present

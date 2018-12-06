@@ -1,0 +1,13 @@
+---
+- name: sixth playbook
+  hosts: all
+ 
+  tasks:
+   - name: installing package
+     apt: name=ntp state=present
+ 
+   - name: checke for file 
+     file: path=/etc/ntp.conf state=file
+
+   - name: staring service
+     service: name=ntp enabled=yes state=started

@@ -1,0 +1,12 @@
+---
+- name: third playbook
+  hosts: all
+
+  tasks:
+   - name: create directory
+     file: path=/root/testdir state=directory owner=root
+  
+   - name: create and copy logs
+     copy: src=/var/log/syslog dest=/root/testdir/logfile owner=test
+
+

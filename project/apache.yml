@@ -1,0 +1,32 @@
+---
+- name: "configuring apache"
+  hosts: all
+  
+  tasks:
+   - name: installing httpd package
+     apt: name=apache2 state=latest
+     notify:
+       - restart httpd
+
+   - name: changing html file for apache
+     copy: dest=/var/www/html/index.html content="this is my automated webserver"
+
+
+   - name: changin configuration file for apache
+     replace:
+       path: "/etc/apache2/ports.conf"
+       regexp: "^Listen 80"
+       replace: "Listen 81"
+     notify:
+       - restart httpd
+
+   - name: start the service
+     service: name=apache2 state=started
+     
+
+
+
+
+  handlers:
+   - name: restart httpd
+     service: name=apache2 state=restarted

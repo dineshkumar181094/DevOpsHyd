@@ -1,0 +1,10 @@
+---
+- name: second playbook for user and group
+  hosts: all
+  
+  tasks:
+   - name: create user
+     user: name=testuser shell=/bin/bash uid=6666 comment="my first user"
+   
+   - name: create group
+     group: name=testgroup gid=7777

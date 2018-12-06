@@ -1,0 +1,14 @@
+---
+- name: create user 
+  hosts: ansibleclient
+ 
+  tasks:
+    - name: adding user
+      user:
+        name: "test"
+        uid: 8888
+     
+    - name: create file
+      file:
+        path: /var/tmp/test
+        state: directory
